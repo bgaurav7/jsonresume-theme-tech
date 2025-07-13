@@ -48,6 +48,42 @@
   </div>
   {{/if}}
 
+	{{#if resume.education.length}}
+	<div class='education'>
+    <div class='sectionName'>
+      <span>EDUCATION</span>
+    </div>
+    <div class='sectionLine'></div>
+    <div class='sectionContent'>
+      {{#each resume.education}}
+      <div class='educationBlock'>
+        <div class='blockHeader'>
+          <span class='title'>
+            {{#if institution}}{{#if url}}<a href='{{url}}'>{{institution}}{{#if location}}, {{location}}{{/if}}{{#if score}} <em>({{score}}{{#if scoreMax}}/{{scoreMax}}{{/if}}{{#if scoreType}} {{scoreType}}{{/if}})</em>{{/if}}</a>{{else}}{{institution}}{{#if location}}, {{location}}{{/if}}{{#if score}} <em>({{score}}{{#if scoreMax}}/{{scoreMax}}{{/if}}{{#if scoreType}} {{scoreType}}{{/if}})</em>{{/if}}{{/if}}{{/if}}
+            <span class='date'>
+              {{#if startDate}}{{startDate}} &mdash; {{#if endDate}}{{endDate}}{{else}}Present{{/if}}{{/if}}
+            </span>
+          </span>
+          {{#if studyType}}<div class='degree'><em>{{studyType}}{{#if area}} ({{area}}){{/if}}</em></div>{{/if}}
+        </div>
+        {{#if courses.length}}
+        <div class='coursesBlock'>
+          {{#each courses}}
+          <ul class='coursesList'>
+            {{#each .}}
+            <li class='course'>{{.}}</li>
+            {{/each}}
+          </ul>
+          {{/each}}
+        </div>
+        {{/if}}
+      </div>
+      {{#unless @last}}<div class='separator'></div>{{/unless}}
+      {{/each}}
+    </div>
+	</div>
+	{{/if}}
+
 	{{#if resume.work.length}}
   <div class='workBlock'>
     <div class='sectionName'>
@@ -124,42 +160,6 @@
     </div>
   </div>
   {{/if}}
-
-	{{#if resume.education.length}}
-	<div class='education'>
-    <div class='sectionName'>
-      <span>EDUCATION</span>
-    </div>
-    <div class='sectionLine'></div>
-    <div class='sectionContent'>
-      {{#each resume.education}}
-      <div class='educationBlock'>
-        <div class='blockHeader'>
-          <span class='title'>
-            {{#if institution}}{{#if url}}<a href='{{url}}'>{{institution}}{{#if location}}, {{location}}{{/if}}{{#if score}} <em>({{score}}{{#if scoreMax}}/{{scoreMax}}{{/if}}{{#if scoreType}} {{scoreType}}{{/if}})</em>{{/if}}</a>{{else}}{{institution}}{{#if location}}, {{location}}{{/if}}{{#if score}} <em>({{score}}{{#if scoreMax}}/{{scoreMax}}{{/if}}{{#if scoreType}} {{scoreType}}{{/if}})</em>{{/if}}{{/if}}{{/if}}
-            <span class='date'>
-              {{#if startDate}}{{startDate}} &mdash; {{#if endDate}}{{endDate}}{{else}}Present{{/if}}{{/if}}
-            </span>
-          </span>
-          {{#if studyType}}<div class='degree'><em>{{studyType}}{{#if area}} ({{area}}){{/if}}</em></div>{{/if}}
-        </div>
-        {{#if courses.length}}
-        <div class='coursesBlock'>
-          {{#each courses}}
-          <ul class='coursesList'>
-            {{#each .}}
-            <li class='course'>{{.}}</li>
-            {{/each}}
-          </ul>
-          {{/each}}
-        </div>
-        {{/if}}
-      </div>
-      {{#unless @last}}<div class='separator'></div>{{/unless}}
-      {{/each}}
-    </div>
-	</div>
-	{{/if}}
 
 	{{#if resume.skills.length}}
 	<div class='skills'>
