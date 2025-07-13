@@ -153,16 +153,13 @@
       <div class='educationBlock'>
         <div class='blockHeader'>
           <span class='title'>
-            {{#if institution}}{{#if url}}<a href='{{url}}'>{{institution}}{{#if location}}, {{location}}{{/if}}</a>{{else}}{{institution}}{{#if location}}, {{location}}{{/if}}{{/if}}{{/if}}
-            {{#if startDate}}<span class='date'>{{startDate}} &mdash; {{#if endDate}}{{endDate}}{{else}}Present{{/if}}</span>{{/if}}
+            {{#if institution}}{{#if url}}<a href='{{url}}'>{{institution}}{{#if location}}, {{location}}{{/if}}{{#if score}} <em>({{score}}{{#if scoreMax}}/{{scoreMax}}{{/if}}{{#if scoreType}} {{scoreType}}{{/if}})</em>{{/if}}</a>{{else}}{{institution}}{{#if location}}, {{location}}{{/if}}{{#if score}} <em>(Score: {{score}}{{#if scoreMax}}/{{scoreMax}}{{/if}}{{#if scoreType}} {{scoreType}}{{/if}})</em>{{/if}}{{/if}}{{/if}}
+            <span class='date'>
+              {{#if startDate}}{{startDate}} &mdash; {{#if endDate}}{{endDate}}{{else}}Present{{/if}}{{/if}}
+            </span>
           </span>
           {{#if studyType}}<div class='degree'><em>{{studyType}}{{#if area}} ({{area}}){{/if}}</em></div>{{/if}}
         </div>
-        {{#if gpa}}
-        <div class='gpa'>
-          <strong>GPA:</strong> {{gpa}}{{#if gpaMax}}/{{gpaMax}}{{/if}}{{#if summary}} ({{summary}}){{/if}}
-        </div>
-        {{/if}}
         {{#if courses.length}}
         <div class='coursesBlock'>
           {{#each courses}}
