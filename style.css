@@ -3,7 +3,7 @@ body {
   background: #EEEEEE;
   font: 12px "Times New Roman", Times, serif;
   line-height: 1.4;
-  margin: 40px 0;
+  margin: 20px 0;
   color: #000;
 }
 
@@ -42,7 +42,7 @@ a:hover {
 .resume {
   margin: 0 auto;
   max-width: 750px;
-  padding: 40px 35px;
+  padding: 20px 30px;
   background: #fff;
   border: 1px solid #ccc;
   box-shadow: 2px 2px 4px #aaa;
@@ -66,12 +66,17 @@ a:hover {
 
 .sectionContent {
   width: 100%;
-  margin-top: 6px;
+  margin-top: 2px;
 }
 
 /* Add spacing after each section except the last one */
 .resume > div:not(:last-child) {
-  margin-bottom: 15px;
+  margin-bottom: 12px;
+}
+
+/* Reduce spacing specifically for skills section */
+.skills {
+  margin-bottom: 10px;
 }
 
 /* Common block elements */
@@ -121,10 +126,22 @@ a:hover {
 }
 
 /* Skill lists - special case for inline display */
+.skillBlock {
+  margin-bottom: 2px;
+}
+
+.skillBlock .title {
+  margin-bottom: 1px;
+}
+
+.skillBlock ul {
+  margin-top: 1px;
+}
+
 .skillBlock ul li {
   display: inline-block;
-  margin-right: 12px;
-  margin-bottom: 1px;
+  margin-right: 10px;
+  margin-bottom: 0;
 }
 
 /* Separators */
@@ -159,8 +176,8 @@ a:hover {
 .basicsBlock {
   font-size: 12px;
   text-align: center;
-  margin-top: 5px;
-  margin-bottom: 15px;
+  margin-top: 3px;
+  margin-bottom: 8px;
 }
 
 /* Education elements */

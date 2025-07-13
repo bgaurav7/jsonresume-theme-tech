@@ -17,38 +17,21 @@
 	<div class='resume'>
 	{{#resume.basics}}
   <div class='nameBlock'>
-    <span class='name'>
-      {{name}}
-    </span>
-    {{#if label}}
-    <div class='label'>{{label}}</div>
-    {{/if}}
+    <span class='name'>{{name}}</span>
+    {{#if label}}<div class='label'>{{label}}</div>{{/if}}
   </div>
   <div class='basicsBlock'>
     <div class='contactBlock'>
-      {{#location}}
-        {{#if address}}{{address}}{{/if}}{{#if city}}{{#if address}} • {{/if}}{{city}}{{/if}}{{#if region}}{{#if city}}, {{/if}}{{region}}{{/if}} {{#if postalCode}}{{postalCode}}{{/if}}
-      {{/location}}
-      {{#if phone}}
-      <span class='divider'>•</span>
-      <span class='phone'>Phone: {{phone}}</span>
-      {{/if}}
-      {{#if email}}
-      <span class='divider'>•</span>
-      <span class='email'>Email: {{email}}</span>
-      {{/if}}
+      {{#location}}{{#if address}}{{address}}{{/if}}{{#if city}}{{#if address}} • {{/if}}{{city}}{{/if}}{{#if region}}{{#if city}}, {{/if}}{{region}}{{/if}} {{#if postalCode}}{{postalCode}}{{/if}}{{/location}}
+      {{#if phone}}<span class='divider'>•</span><span class='phone'>Phone: {{phone}}</span>{{/if}}
+      {{#if email}}<span class='divider'>•</span><span class='email'>Email: {{email}}</span>{{/if}}
     </div>
     {{#if profiles.length}}
-      <div class='profilesBlock'>
-        {{#each profiles}}
-          {{#if url}}
-            <span class='url'>
-              <a href='{{url}}'>{{network}}</a>
-            </span>
-            {{#unless @last}}<span class='divider'>•</span>{{/unless}}
-          {{/if}}
+    <div class='profilesBlock'>
+      {{#each profiles}}
+        {{#if url}}<span class='url'><a href='{{url}}'>{{network}}</a></span>{{#unless @last}}<span class='divider'>•</span>{{/unless}}{{/if}}
       {{/each}}
-      </div>
+    </div>
     {{/if}}
   </div>
 	{{/resume.basics}}
@@ -227,6 +210,7 @@
           </span>
           {{/if}}
         </div>
+        {{#if summary}}<div class='summary'>{{{summary}}}</div>{{/if}}
         {{#if highlights.length}}
         <ul class='highlights'>
           {{#each highlights}}

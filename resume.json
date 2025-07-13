@@ -16,6 +16,10 @@
     },
     "profiles": [
       {
+        "network": "Website",
+        "url": "https://bgaurav.in"
+      },
+      {
         "network": "LinkedIn",
         "username": "bgaurav7",
         "url": "https://linkedin.com/in/bgaurav7"
