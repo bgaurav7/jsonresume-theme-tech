@@ -181,6 +181,36 @@
 	</div>
 	{{/if}}
 
+	{{#if resume.skills.length}}
+	<div class='skills'>
+    <div class='sectionName'>
+      <span>SKILLS</span>
+    </div>
+    <div class='sectionLine'></div>
+    <div class='sectionContent'>
+      {{#each resume.skills}}
+      <div class='skillBlock'>
+        <span class='title'>{{#if name}}{{name}}{{/if}}{{#if level}} <em>({{level}})</em>{{/if}}:</span>
+        {{#if keywords.length}}
+          <ul class='skillList'>
+          {{#each keywords}}
+            <li>{{.}}</li>
+          {{/each}}
+          </ul>
+        {{/if}}
+        {{#if details.length}}
+          <ul class='skillDetails'>
+          {{#each details}}
+            <li>{{#if text}}{{text}}{{/if}}{{#if comment}} <em>({{comment}})</em>{{/if}}</li>
+          {{/each}}
+          </ul>
+        {{/if}}
+      </div>
+      {{/each}}
+    </div>
+	</div>
+	{{/if}}
+
 	{{#if resume.publications.length}}
 	<div class='publications'>
     <div class='sectionName'>
@@ -217,7 +247,7 @@
 	{{#if resume.awards.length}}
 	<div class='awards'>
     <div class='sectionName'>
-      <span>AWARDS</span>
+      <span>AWARDS & RECOGNITION</span>
     </div>
     <div class='sectionLine'></div>
     <div class='sectionContent'>
@@ -225,7 +255,7 @@
       <div class='awardBlock'>
         <div class='blockHeader'>
           <span class='title'>
-            {{#if title}}{{title}}{{/if}}{{#if awarder}}, {{awarder}}{{/if}}
+            {{#if title}}{{title}}{{#if awarder}}: {{awarder}}{{/if}}{{/if}}
           </span>
           {{#if date}}
           <span class='date'>
@@ -277,36 +307,6 @@
         {{/if}}
       </div>
       {{#unless @last}}<div class='separator'></div>{{/unless}}
-      {{/each}}
-    </div>
-	</div>
-	{{/if}}
-
-	{{#if resume.skills.length}}
-	<div class='skills'>
-    <div class='sectionName'>
-      <span>SKILLS</span>
-    </div>
-    <div class='sectionLine'></div>
-    <div class='sectionContent'>
-      {{#each resume.skills}}
-      <div class='skillBlock'>
-        <span class='title'>{{#if name}}{{name}}{{/if}}{{#if level}} <em>({{level}})</em>{{/if}}:</span>
-        {{#if keywords.length}}
-          <ul class='skillList'>
-          {{#each keywords}}
-            <li>{{.}}</li>
-          {{/each}}
-          </ul>
-        {{/if}}
-        {{#if details.length}}
-          <ul class='skillDetails'>
-          {{#each details}}
-            <li>{{#if text}}{{text}}{{/if}}{{#if comment}} <em>({{comment}})</em>{{/if}}</li>
-          {{/each}}
-          </ul>
-        {{/if}}
-      </div>
       {{/each}}
     </div>
 	</div>
