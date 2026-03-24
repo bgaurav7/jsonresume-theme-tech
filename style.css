@@ -8,7 +8,7 @@
 
 /* Base styles */
 body {
-  background: #eeeeee;
+  background: #ffffff;
   font: 12pt/1.15 "Times New Roman", Times, serif;
   margin: 20px 0;
   color: #000;
@@ -42,10 +42,6 @@ ul {
   margin-bottom: 0;
 }
 
-li {
-  margin-bottom: 1px;
-}
-
 a {
   text-decoration: none;
   color: inherit;
@@ -60,8 +56,7 @@ a:hover {
   font-weight: normal;
 }
 
-.projectUrl,
-.profileUrl {
+.projectUrl {
   font-weight: normal;
   font-size: inherit;
   color: #333;
@@ -115,24 +110,39 @@ h2.sectionName {
   margin-bottom: 4px;
 }
 
-/* Common content elements — title + date on one row (flex, DOM order = read order) */
+/*
+ * Headers: keep DOM order friendly for PDF text extraction (e.g. title, then company, then dates).
+ * Work / education / volunteer: second line is a flex row (company or degree | dates) to save vertical space.
+ * Single-line title + date (projects, awards, …): .blockHeaderInlineMeta
+ */
 .blockHeader {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 4px 12px;
+  display: block;
   margin-bottom: 2px;
 }
 
-.titleGroup {
+.blockHeader.blockHeaderInlineMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px 16px;
+}
+
+.blockHeader.blockHeaderInlineMeta h3.title {
   flex: 1 1 auto;
   min-width: 0;
-  padding-right: 4px;
+}
+
+.blockHeader.blockHeaderInlineMeta .dateLine {
+  flex: 0 0 auto;
+  margin-top: 0;
+  text-align: right;
+}
+
+.titleGroup {
+  min-width: 0;
 }
 
 .titleGroup h3.title {
-  flex: none;
   padding-right: 0;
 }
 
@@ -142,10 +152,41 @@ h3.title {
   color: #000;
   display: block;
   line-height: 1.15;
+  margin: 0;
+  padding-right: 0;
+}
+
+.metaRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 6px 12px;
+  flex-wrap: wrap;
+  margin-top: 1px;
+}
+
+.metaRow .companyLine,
+.metaRow .degree {
   flex: 1 1 auto;
   min-width: 0;
   margin: 0;
-  padding-right: 4px;
+}
+
+.metaRow .position {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+}
+
+.metaRow .dateLine {
+  flex: 0 1 auto;
+  margin-top: 0;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.metaRow > .dateLine:only-child {
+  margin-left: auto;
 }
 
 .companyLine {
@@ -157,9 +198,6 @@ h3.title {
 }
 
 .dateLine {
-  flex: 0 0 auto;
-  margin: 0;
-  text-align: right;
   white-space: nowrap;
 }
 
@@ -174,10 +212,13 @@ h3.title {
   margin-bottom: 2px;
 }
 
-.website {
-  margin-bottom: 5px;
-  font-size: 12pt;
-  font-weight: 400;
+.websiteLink,
+.profileLink,
+.phoneLink,
+.emailLink {
+  font-size: inherit;
+  font-weight: normal;
+  color: inherit;
 }
 
 .summary {
@@ -186,12 +227,24 @@ h3.title {
   line-height: 1.15;
 }
 
-/* Lists */
+/* Lists — hyphen markers for ATS-friendly plain-text extraction */
 .sectionContent ul {
-  padding-left: 20px;
+  list-style: none;
+  padding-left: 0;
   margin-top: 2px;
   margin-bottom: 2px;
-  list-style-type: disc;
+}
+
+.sectionContent ul > li {
+  position: relative;
+  padding-left: 1.1em;
+  margin-bottom: 1px;
+}
+
+.sectionContent ul > li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
 }
 
 /* Skills — <b>Name:</b> key1, key2, … (inline; names are body color, not accent) */
@@ -230,6 +283,30 @@ h3.title {
   opacity: 1;
 }
 
+/* Contact line: flex items wrap as whole segments (bullet + label never orphaned). */
+.headerContact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.35em;
+  row-gap: 0.2em;
+}
+
+.headerContact .contactPiece {
+  flex: 0 1 auto;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+.headerContact .divider {
+  margin-left: 0;
+  margin-right: 0.2em;
+}
+
+.contactLocation:empty {
+  display: none;
+}
+
 /* Header elements — left-aligned for ATS-friendly linear flow */
 .nameBlock {
   font-size: 22pt;
@@ -264,8 +341,8 @@ ul.coursesList {
   display: block;
   width: 100%;
   margin: 0;
-  padding-left: 20px;
-  list-style-type: disc;
+  padding-left: 0;
+  list-style: none;
 }
 
 .course {
@@ -278,7 +355,6 @@ ul.coursesList {
   font-size: inherit;
 }
 
-/* Publications — one row: title (flex) + date / summary (right) */
 .publicationBlock {
   margin-bottom: 2px;
 }

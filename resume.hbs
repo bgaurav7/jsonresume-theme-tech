@@ -21,18 +21,17 @@
     {{#if label}}<div class='label'>{{{label}}}</div>{{/if}}
   </div>
   <div class='basicsBlock'>
-    <div class='contactBlock'>
-      {{#location}}{{#if address}}{{address}}{{/if}}{{#if city}}{{#if address}} • {{/if}}{{city}}{{/if}}{{#if region}}{{#if city}}, {{/if}}{{region}}{{/if}} {{#if postalCode}}{{postalCode}}{{/if}}{{/location}}
-      {{#if phone}}<span class='divider'>•</span><span class='phone'>Phone: {{phone}}</span>{{/if}}
-      {{#if email}}<span class='divider'>•</span><span class='email'>Email: {{email}}</span>{{/if}}
-    </div>
-    {{#if profiles.length}}
-    <div class='profilesBlock'>
+    <div class='headerContact'>
+      <span class='contactPiece contactLocation'>{{#location}}{{#if address}}{{address}}{{/if}}{{#if city}}{{#if address}} • {{/if}}{{city}}{{/if}}{{#if region}}{{#if city}}, {{/if}}{{region}}{{/if}} {{#if postalCode}}{{postalCode}}{{/if}}{{/location}}</span>
+      {{#if phone}}<span class='contactPiece'><span class='divider'>•</span> <a class='phoneLink' href='tel:{{phone}}'>{{phone}}</a></span>{{/if}}
+      {{#if email}}<span class='contactPiece'><span class='divider'>•</span> <a class='emailLink' href='mailto:{{email}}'>{{email}}</a></span>{{/if}}
+      {{#if url}}<span class='contactPiece'><span class='divider'>•</span> <a class='websiteLink' href='{{url}}'>{{url}}</a></span>{{/if}}
+      {{#if profiles.length}}
       {{#each profiles}}
-        {{#if url}}<span class='url'><a href='{{url}}'>{{{network}}}</a> <span class='profileUrl'>({{url}})</span></span>{{#unless @last}}<span class='divider'>•</span>{{/unless}}{{/if}}
+      {{#if url}}<span class='contactPiece'><span class='divider'>•</span> <a class='profileLink' href='{{url}}'>{{{network}}}</a></span>{{/if}}
       {{/each}}
+      {{/if}}
     </div>
-    {{/if}}
   </div>
 	{{/resume.basics}}
 
@@ -60,13 +59,15 @@
 	      <div class='blockHeader'>
 	        <div class='titleGroup'>
 	          {{#if position}}<h3 class='title'>{{{position}}}</h3>{{/if}}
-	          {{#if name}}<div class='companyLine'><em>{{{name}}}</em>{{#if location}}, {{{location}}}{{/if}}</div>{{/if}}
+	          <div class='metaRow'>
+	            {{#if name}}<div class='companyLine'><em>{{{name}}}</em>{{#if location}}, {{{location}}}{{/if}}</div>{{/if}}
+	            {{#if startDate}}
+	            <div class='dateLine'>
+	              <span class='date'>{{#if startDate}}{{startDate}}{{/if}} - {{#if endDate}}{{endDate}}{{else}}Present{{/if}}</span>
+	            </div>
+	            {{/if}}
+	          </div>
 	        </div>
-	        {{#if startDate}}
-	        <div class='dateLine'>
-	          <span class='date'>{{#if startDate}}{{startDate}}{{/if}} - {{#if endDate}}{{endDate}}{{else}}Present{{/if}}</span>
-	        </div>
-	        {{/if}}
 	      </div>
 	      {{#if summary}}<div class='summary'><p class='summaryProse'>{{{summary}}}</p></div>{{/if}}
 	      {{#if highlights.length}}
@@ -103,13 +104,15 @@
           <h3 class='title'>
             {{#if institution}}{{{institution}}}{{#if location}}, {{{location}}}{{/if}}{{#if score}} <em>({{{score}}}{{#if scoreMax}}/{{{scoreMax}}}{{/if}}{{#if scoreType}} {{{scoreType}}}{{/if}})</em>{{/if}}{{/if}}
           </h3>
-          {{#if startDate}}
-          <div class='dateLine'>
-            <span class='date'>{{startDate}} - {{#if endDate}}{{endDate}}{{else}}Present{{/if}}</span>
+          <div class='metaRow'>
+            {{#if studyType}}<div class='degree'><em>{{{studyType}}}{{#if area}} ({{{area}}}){{/if}}</em></div>{{/if}}
+            {{#if startDate}}
+            <div class='dateLine'>
+              <span class='date'>{{startDate}} - {{#if endDate}}{{endDate}}{{else}}Present{{/if}}</span>
+            </div>
+            {{/if}}
           </div>
-          {{/if}}
         </div>
-        {{#if studyType}}<div class='degree'><em>{{{studyType}}}{{#if area}} ({{{area}}}){{/if}}</em></div>{{/if}}
         {{#if courses.length}}
         <div class='coursesBlock'>
           <ul class='coursesList'>
@@ -135,7 +138,7 @@
     <div class='sectionContent'>
       {{#each resume.projects}}
       <div class='projectBlock'>
-        <div class='blockHeader'>
+        <div class='blockHeader blockHeaderInlineMeta'>
           <h3 class='title'>
             {{{name}}}{{#if url}} <span class='projectUrl'>({{url}})</span>{{/if}}
           </h3>
@@ -193,13 +196,13 @@
 	{{#if resume.publications.length}}
 	<div class='publications'>
     <h2 class='sectionName'>
-      <span>Publications</span>
+      <span>Patents</span>
     </h2>
     <div class='sectionLine'></div>
     <div class='sectionContent'>
       {{#each resume.publications}}
       <div class='publicationBlock'>
-        <div class='blockHeader'>
+        <div class='blockHeader blockHeaderInlineMeta'>
           <h3 class='title'>{{#if name}}{{{name}}}{{/if}}</h3>
           {{#if releaseDate}}
           <div class='dateLine'>
@@ -236,7 +239,7 @@
     <div class='sectionContent'>
       {{#each resume.awards}}
       <div class='awardBlock'>
-        <div class='blockHeader'>
+        <div class='blockHeader blockHeaderInlineMeta'>
           <h3 class='title'>
             {{#if title}}{{{title}}}{{#if awarder}}: {{{awarder}}}{{/if}}{{/if}}
           </h3>
@@ -273,13 +276,15 @@
           <h3 class='title'>
             {{#if organization}}{{{organization}}}{{/if}}
           </h3>
-          {{#if startDate}}
-          <div class='dateLine'>
-            <span class='date'>{{#if startDate}}{{startDate}}{{/if}} - {{#if endDate}}{{endDate}}{{else}}Present{{/if}}</span>
+          <div class='metaRow'>
+            {{#if position}}<div class='position'><strong>{{{position}}}</strong></div>{{/if}}
+            {{#if startDate}}
+            <div class='dateLine'>
+              <span class='date'>{{#if startDate}}{{startDate}}{{/if}} - {{#if endDate}}{{endDate}}{{else}}Present{{/if}}</span>
+            </div>
+            {{/if}}
           </div>
-          {{/if}}
         </div>
-        <div class='position'><strong>{{{position}}}</strong></div>
         {{#if summary}}<div class='summary'><p class='summaryProse'>{{{summary}}}</p></div>{{/if}}
         {{#if highlights.length}}
         <ul class='highlights'>
@@ -304,7 +309,7 @@
     <div class='sectionContent'>
       {{#each resume.certificates}}
       <div class='certificateBlock'>
-        <div class='blockHeader'>
+        <div class='blockHeader blockHeaderInlineMeta'>
           <h3 class='title'>
             {{{name}}} - {{{issuer}}}
           </h3>
