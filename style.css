@@ -5,11 +5,18 @@
 
 /* Base styles */
 body {
-  background: #EEEEEE;
+  background: #eeeeee;
   font: 12px "Times New Roman", Times, serif;
   line-height: 1.4;
   margin: 20px 0;
   color: #000;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font: inherit;
 }
 
 em {
@@ -23,6 +30,10 @@ strong {
 
 p {
   line-height: 1.4;
+}
+
+p.summaryProse {
+  margin: 0;
 }
 
 ul {
@@ -47,6 +58,12 @@ a:hover {
   font-weight: normal;
 }
 
+.projectUrl {
+  font-weight: normal;
+  font-size: 11px;
+  color: #333;
+}
+
 /* Resume container */
 .resume {
   margin: 0 auto;
@@ -58,11 +75,10 @@ a:hover {
   -webkit-box-shadow: 2px 2px 4px #aaa;
 }
 
-/* Section styling */
-.sectionName {
+/* Section styling — semantic h2 */
+h2.sectionName {
   text-align: left;
   font-weight: bold;
-  text-transform: uppercase;
   font-size: 12px;
   margin-bottom: 2px;
   color: var(--resume-accent);
@@ -96,23 +112,42 @@ a:hover {
   margin-bottom: 4px;
 }
 
-/* Common content elements */
+/* Common content elements — title + date on one row (flex, DOM order = read order) */
 .blockHeader {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 12px;
   margin-bottom: 2px;
 }
 
-.title {
+h3.title {
   font-weight: bold;
   font-size: 12px;
   color: #000;
+  display: block;
+  line-height: 1.35;
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  padding-right: 4px;
+}
+
+.dateLine {
+  flex: 0 0 auto;
+  margin: 0;
+  text-align: right;
+  white-space: nowrap;
 }
 
 .date {
-  float: right;
   font-weight: normal;
+  font-size: 12px;
 }
 
-.position, .degree {
+.position,
+.degree {
   margin-top: 1px;
   margin-bottom: 2px;
 }
@@ -173,15 +208,17 @@ a:hover {
   opacity: 0.55;
 }
 
-/* Header elements */
+/* Header elements — left-aligned for ATS-friendly linear flow */
 .nameBlock {
   font-size: 22px;
-  text-align: center;
+  text-align: left;
   margin-bottom: 0;
 }
 
-.name {
+h1.name {
+  font-size: 22px;
   font-weight: bold;
+  display: block;
 }
 
 .label {
@@ -191,23 +228,22 @@ a:hover {
 
 .basicsBlock {
   font-size: 12px;
-  text-align: center;
+  text-align: left;
   margin-top: 3px;
   margin-bottom: 8px;
 }
 
-/* Education elements */
+/* Education — single-column course list */
 .coursesBlock {
   margin-top: 2px;
 }
 
-.coursesList {
-  width: 28%;
-  vertical-align: top;
-  display: inline-block;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-left: 15px;
+ul.coursesList {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding-left: 20px;
+  list-style-type: disc;
 }
 
 .course {
@@ -220,30 +256,41 @@ a:hover {
   font-size: 11px;
 }
 
+/* Patents — one row: title (flex) + year · app no. (right) */
+.publicationBlock {
+  margin-bottom: 2px;
+}
+
 /* Media Queries */
 @media only screen and (max-width: 40em) {
   body {
     margin: 0;
     font-size: 14px;
   }
+
   .resume {
     margin: 0 auto;
     max-width: 600px;
     padding: 0.5em 1em;
     border: none;
   }
+
   .sectionContent {
     width: 100%;
   }
-  .sectionContent .date {
-    padding-right: 2em;
-  }
-  .sectionName {
+
+  h2.sectionName {
     width: auto;
   }
+
   .nameBlock {
     font-size: 20px;
   }
+
+  h1.name {
+    font-size: 20px;
+  }
+
   .basicsBlock {
     font-size: 14px;
   }
@@ -251,8 +298,9 @@ a:hover {
 
 @media print {
   body {
-    background: #FFFFFF;
+    background: #ffffff;
   }
+
   .resume {
     margin: 0 auto;
     max-width: 750px;
@@ -267,7 +315,7 @@ a:hover {
     color: black;
   }
 
-  .sectionName {
+  h2.sectionName {
     color: var(--resume-accent);
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
