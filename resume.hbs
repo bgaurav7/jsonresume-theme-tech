@@ -17,8 +17,8 @@
 	<div class='resume'>
 	{{#resume.basics}}
   <div class='nameBlock'>
-    <span class='name'>{{name}}</span>
-    {{#if label}}<div class='label'>{{label}}</div>{{/if}}
+    <span class='name'>{{{name}}}</span>
+    {{#if label}}<div class='label'>{{{label}}}</div>{{/if}}
   </div>
   <div class='basicsBlock'>
     <div class='contactBlock'>
@@ -29,7 +29,7 @@
     {{#if profiles.length}}
     <div class='profilesBlock'>
       {{#each profiles}}
-        {{#if url}}<span class='url'><a href='{{url}}'>{{network}}</a></span>{{#unless @last}}<span class='divider'>•</span>{{/unless}}{{/if}}
+        {{#if url}}<span class='url'><a href='{{url}}'>{{{network}}}</a></span>{{#unless @last}}<span class='divider'>•</span>{{/unless}}{{/if}}
       {{/each}}
     </div>
     {{/if}}
@@ -43,7 +43,7 @@
     </div>
     <div class='sectionLine'></div>
     <div class='sectionContent'>
-      <span>{{resume.basics.summary}}</span>
+      <span>{{{resume.basics.summary}}}</span>
     </div>
   </div>
   {{/if}}
@@ -59,19 +59,19 @@
       <div class='educationBlock'>
         <div class='blockHeader'>
           <span class='title'>
-            {{#if institution}}{{#if url}}<a href='{{url}}'>{{institution}}{{#if location}}, {{location}}{{/if}}{{#if score}} <em>({{score}}{{#if scoreMax}}/{{scoreMax}}{{/if}}{{#if scoreType}} {{scoreType}}{{/if}})</em>{{/if}}</a>{{else}}{{institution}}{{#if location}}, {{location}}{{/if}}{{#if score}} <em>({{score}}{{#if scoreMax}}/{{scoreMax}}{{/if}}{{#if scoreType}} {{scoreType}}{{/if}})</em>{{/if}}{{/if}}{{/if}}
+            {{#if institution}}{{#if url}}<a href='{{url}}'>{{{institution}}}{{#if location}}, {{{location}}}{{/if}}{{#if score}} <em>({{{score}}}{{#if scoreMax}}/{{{scoreMax}}}{{/if}}{{#if scoreType}} {{{scoreType}}}{{/if}})</em>{{/if}}</a>{{else}}{{{institution}}}{{#if location}}, {{{location}}}{{/if}}{{#if score}} <em>({{{score}}}{{#if scoreMax}}/{{{scoreMax}}}{{/if}}{{#if scoreType}} {{{scoreType}}}{{/if}})</em>{{/if}}{{/if}}{{/if}}
             <span class='date'>
               {{#if startDate}}{{startDate}} &mdash; {{#if endDate}}{{endDate}}{{else}}Present{{/if}}{{/if}}
             </span>
           </span>
-          {{#if studyType}}<div class='degree'><em>{{studyType}}{{#if area}} ({{area}}){{/if}}</em></div>{{/if}}
+          {{#if studyType}}<div class='degree'><em>{{{studyType}}}{{#if area}} ({{{area}}}){{/if}}</em></div>{{/if}}
         </div>
         {{#if courses.length}}
         <div class='coursesBlock'>
           {{#each courses}}
           <ul class='coursesList'>
             {{#each .}}
-            <li class='course'>{{.}}</li>
+            <li class='course'>{{{this}}}</li>
             {{/each}}
           </ul>
           {{/each}}
@@ -95,7 +95,7 @@
 			<div class="jobBlock">
 	      <div class='blockHeader'>
 	        <span class='title'>
-	          {{#if position}}{{#if url}}<a href='{{url}}'>{{position}} - <em>{{name}}</em>{{#if location}}, {{location}}{{/if}}</a>{{else}}{{position}} - <em>{{name}}</em>{{#if location}}, {{location}}{{/if}}{{/if}}{{/if}}
+	          {{#if position}}{{#if url}}<a href='{{url}}'>{{{position}}} - <em>{{{name}}}</em>{{#if location}}, {{{location}}}{{/if}}</a>{{else}}{{{position}}} - <em>{{{name}}}</em>{{#if location}}, {{{location}}}{{/if}}{{/if}}{{/if}}
 	        </span>
 	        {{#if startDate}}
 	        <span class='date'>
@@ -107,14 +107,14 @@
 	      {{#if highlights.length}}
 	      <ul class='highlights'>
 	        {{#each highlights}}
-	        <li>{{.}}</li>
+	        <li>{{{.}}}</li>
 	        {{/each}}
 	      </ul>
 	      {{/if}}
 	      {{#if details.length}}
 	      <ul class='details'>
 	        {{#each details}}
-	        <li>{{#if text}}{{text}}{{/if}}{{#if comment}} <em>({{comment}})</em>{{/if}}</li>
+	        <li>{{#if text}}{{{text}}}{{/if}}{{#if comment}} <em>({{{comment}}})</em>{{/if}}</li>
 	        {{/each}}
 	      </ul>
 	      {{/if}}
@@ -136,7 +136,7 @@
       <div class='projectBlock'>
         <div class='blockHeader'>
           <span class='title'>
-            {{#if url}}<a href='{{url}}'><span class='normal-weight'>{{name}} <em>({{url}})</em></span></a>{{else}}{{name}}{{/if}}
+            {{#if url}}<a href='{{url}}'><span class='normal-weight'>{{{name}}} <em>({{url}})</em></span></a>{{else}}{{{name}}}{{/if}}
           </span>
           {{#if startDate}}
           <span class='date'>
@@ -145,12 +145,12 @@
           {{/if}}
         </div>
         {{#if description}}
-        <div class='description'>{{description}}</div>
+        <div class='description'>{{{description}}}</div>
         {{/if}}
         {{#if highlights.length}}
         <ul class='highlights'>
           {{#each highlights}}
-          <li>{{.}}</li>
+          <li>{{{.}}}</li>
           {{/each}}
         </ul>
         {{/if}}
@@ -170,18 +170,18 @@
     <div class='sectionContent'>
       {{#each resume.skills}}
       <div class='skillBlock'>
-        <span class='title'>{{#if name}}{{name}}{{/if}}{{#if level}} <em>({{level}})</em>{{/if}}:</span>
+        <span class='title'>{{#if name}}{{{name}}}{{/if}}{{#if level}} <em>({{{level}}})</em>{{/if}}:</span>
         {{#if keywords.length}}
           <ul class='skillList'>
           {{#each keywords}}
-            <li>{{.}}</li>
+            <li>{{{.}}}</li>
           {{/each}}
           </ul>
         {{/if}}
         {{#if details.length}}
           <ul class='skillDetails'>
           {{#each details}}
-            <li>{{#if text}}{{text}}{{/if}}{{#if comment}} <em>({{comment}})</em>{{/if}}</li>
+            <li>{{#if text}}{{{text}}}{{/if}}{{#if comment}} <em>({{{comment}}})</em>{{/if}}</li>
           {{/each}}
           </ul>
         {{/if}}
@@ -202,7 +202,7 @@
       <div class='publicationBlock'>
         <div class='blockHeader'>
           <span class='title'>
-            {{#if website}}<a href='{{website}}'>{{#if name}}{{name}}{{/if}}{{#if publisher}}, {{publisher}}{{/if}}</a>{{else}}{{#if name}}{{name}}{{/if}}{{#if publisher}}, {{publisher}}{{/if}}{{/if}}
+            {{#if website}}<a href='{{website}}'>{{#if name}}{{{name}}}{{/if}}{{#if publisher}}, {{{publisher}}}{{/if}}</a>{{else}}{{#if name}}{{{name}}}{{/if}}{{#if publisher}}, {{{publisher}}}{{/if}}{{/if}}
           </span>
           {{#if releaseDate}}
           <span class='date'>
@@ -214,7 +214,7 @@
         {{#if highlights.length}}
         <ul class='highlights'>
           {{#each highlights}}
-          <li>{{.}}</li>
+          <li>{{{.}}}</li>
           {{/each}}
         </ul>
         {{/if}}
@@ -236,7 +236,7 @@
       <div class='awardBlock'>
         <div class='blockHeader'>
           <span class='title'>
-            {{#if title}}{{title}}{{#if awarder}}: {{awarder}}{{/if}}{{/if}}
+            {{#if title}}{{{title}}}{{#if awarder}}: {{{awarder}}}{{/if}}{{/if}}
           </span>
           {{#if date}}
           <span class='date'>
@@ -247,7 +247,7 @@
         {{#if highlights.length}}
         <ul class='highlights'>
           {{#each highlights}}
-          <li>{{.}}</li>
+          <li>{{{.}}}</li>
           {{/each}}
         </ul>
         {{/if}}
@@ -269,7 +269,7 @@
       <div class='volunteerBlock'>
         <div class='blockHeader'>
           <span class='title'>
-            {{#if website}}<a href='{{website}}'>{{#if organization}}{{organization}}{{/if}}</a>{{else}}{{#if organization}}{{organization}}{{/if}}{{/if}}
+            {{#if website}}<a href='{{website}}'>{{#if organization}}{{{organization}}}{{/if}}</a>{{else}}{{#if organization}}{{{organization}}}{{/if}}{{/if}}
           </span>
           {{#if startDate}}
           <span class='date'>
@@ -277,12 +277,12 @@
           </span>
           {{/if}}
         </div>
-        <div class='position'><strong>{{position}}</strong></div>
+        <div class='position'><strong>{{{position}}}</strong></div>
         {{#if summary}}<div class='summary'>{{{summary}}}</div>{{/if}}
         {{#if highlights.length}}
         <ul class='highlights'>
           {{#each highlights}}
-          <li>{{.}}</li>
+          <li>{{{.}}}</li>
           {{/each}}
         </ul>
         {{/if}}
@@ -304,7 +304,7 @@
       <div class='certificateBlock'>
         <div class='blockHeader'>
           <span class='title'>
-            {{#if url}}<a href='{{url}}'>{{name}} - {{issuer}}</a>{{else}}{{name}} - {{issuer}}{{/if}}
+            {{#if url}}<a href='{{url}}'>{{{name}}} - {{{issuer}}}</a>{{else}}{{{name}}} - {{{issuer}}}{{/if}}
           </span>
           {{#if date}}
           <span class='date'>{{date}}</span>
@@ -326,9 +326,9 @@
     <div class='sectionContent'>
       <div class='languageBlock'>
         {{#each resume.languages}}
-        <span class='language'>{{language}}</span>
+        <span class='language'>{{{language}}}</span>
         {{#if fluency}}
-        <span class='fluency'><em>({{fluency}})</em></span>
+        <span class='fluency'><em>({{{fluency}}})</em></span>
         {{/if}}
         {{#unless @last}}<span>,</span>{{/unless}}
         {{/each}}
@@ -346,11 +346,11 @@
     <div class='sectionContent'>
       <div class='interestBlock'>
         {{#each resume.interests}}
-        <span class='name'>{{name}}</span><!--
+        <span class='name'>{{{name}}}</span><!--
         {{#if keywords.length}}
         --><span class='keywords'> <em>[
         {{#each keywords}}
-          {{.}}<!--
+          {{{.}}}<!--
           -->{{#unless @last}}, {{/unless}}
         {{/each}}
         ]</em></span><!--
@@ -372,10 +372,10 @@
       {{#each resume.references}}
       <div class='referenceBlock'>
         <div class='blockHeader'>
-          <span class='title'>{{name}}</span>
+          <span class='title'>{{{name}}}</span>
         </div>
         {{#if reference}}
-        <div class='reference'>"{{reference}}"</div>
+        <div class='reference'>"{{{reference}}}"</div>
         {{/if}}
       </div>
       {{#unless @last}}<div class='separator'></div>{{/unless}}

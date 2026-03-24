@@ -12,6 +12,10 @@ em {
   font-style: italic;
 }
 
+strong {
+  font-weight: bold;
+}
+
 p {
   line-height: 1.4;
 }
