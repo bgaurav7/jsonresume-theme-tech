@@ -1,3 +1,8 @@
+/* Brand accent — section titles, accents */
+:root {
+  --resume-accent: #2079c7;
+}
+
 /* Base styles */
 body {
   background: #EEEEEE;
@@ -35,7 +40,7 @@ a {
 
 a:hover {
   text-decoration: underline;
-  color: #2077b2;
+  color: var(--resume-accent);
 }
 
 .normal-weight {
@@ -60,12 +65,14 @@ a:hover {
   text-transform: uppercase;
   font-size: 12px;
   margin-bottom: 2px;
+  color: var(--resume-accent);
 }
 
 .sectionLine {
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid var(--resume-accent);
   margin-bottom: 8px;
   width: 100%;
+  opacity: 0.45;
 }
 
 .sectionContent {
@@ -97,6 +104,7 @@ a:hover {
 .title {
   font-weight: bold;
   font-size: 12px;
+  color: #000;
 }
 
 .date {
@@ -129,23 +137,25 @@ a:hover {
   list-style-type: disc;
 }
 
-/* Skill lists - special case for inline display */
+/* Skills — <b>Name:</b> key1, key2, … (inline; names are body color, not accent) */
 .skillBlock {
-  margin-bottom: 2px;
+  margin-bottom: 4px;
+  line-height: 1.4;
 }
 
-.skillBlock .title {
-  margin-bottom: 1px;
+.skillRow {
+  display: block;
 }
 
-.skillBlock ul {
-  margin-top: 1px;
+.skillRow b {
+  font-weight: bold;
+  color: #000;
 }
 
-.skillBlock ul li {
-  display: inline-block;
-  margin-right: 10px;
-  margin-bottom: 0;
+.skillDetailsRow {
+  display: block;
+  margin-top: 2px;
+  padding-left: 0;
 }
 
 /* Separators */
@@ -159,6 +169,8 @@ a:hover {
   font-weight: bold;
   margin-left: 5px;
   margin-right: 5px;
+  color: var(--resume-accent);
+  opacity: 0.55;
 }
 
 /* Header elements */
@@ -253,5 +265,24 @@ a:hover {
 
   a {
     color: black;
+  }
+
+  .sectionName {
+    color: var(--resume-accent);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .sectionLine {
+    border-bottom-color: var(--resume-accent);
+    opacity: 0.45;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .divider {
+    color: var(--resume-accent);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 }

@@ -170,20 +170,18 @@
     <div class='sectionContent'>
       {{#each resume.skills}}
       <div class='skillBlock'>
-        <span class='title'>{{#if name}}{{{name}}}{{/if}}{{#if level}} <em>({{{level}}})</em>{{/if}}:</span>
-        {{#if keywords.length}}
-          <ul class='skillList'>
-          {{#each keywords}}
-            <li>{{{.}}}</li>
-          {{/each}}
-          </ul>
-        {{/if}}
+        <span class='skillRow'>
+          {{#if name}}<b>{{{name}}}{{#if level}} <em>({{{level}}})</em>{{/if}}:</b>{{/if}}<!--
+          -->{{#if keywords.length}}<!--
+          -->{{#each keywords}} {{{.}}}{{#unless @last}}, {{/unless}}{{/each}}<!--
+          -->{{/if}}
+        </span>
         {{#if details.length}}
-          <ul class='skillDetails'>
+        <span class='skillDetailsRow'>
           {{#each details}}
-            <li>{{#if text}}{{{text}}}{{/if}}{{#if comment}} <em>({{{comment}}})</em>{{/if}}</li>
+          {{#if text}}{{{text}}}{{/if}}{{#if comment}} <em>({{{comment}}})</em>{{/if}}{{#unless @last}}; {{/unless}}
           {{/each}}
-          </ul>
+        </span>
         {{/if}}
       </div>
       {{/each}}
