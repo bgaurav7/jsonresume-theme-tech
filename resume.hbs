@@ -22,13 +22,13 @@
   </div>
   <div class='basicsBlock'>
     <div class='headerContact'>
-      <span class='contactPiece contactLocation'>{{#location}}{{#if address}}{{address}}{{/if}}{{#if city}}{{#if address}} • {{/if}}{{city}}{{/if}}{{#if region}}{{#if city}}, {{/if}}{{region}}{{/if}} {{#if postalCode}}{{postalCode}}{{/if}}{{/location}}</span>
-      {{#if phone}}<span class='contactPiece'><span class='divider'>•</span> <a class='phoneLink' href='tel:{{phone}}'>{{phone}}</a></span>{{/if}}
-      {{#if email}}<span class='contactPiece'><span class='divider'>•</span> <a class='emailLink' href='mailto:{{email}}'>{{email}}</a></span>{{/if}}
-      {{#if url}}<span class='contactPiece'><span class='divider'>•</span> <a class='websiteLink' href='{{url}}'>{{url}}</a></span>{{/if}}
+      <span class='contactPiece contactLocation'>{{#location}}{{#if address}}{{address}}{{/if}}{{#if city}}{{#if address}}, {{/if}}{{city}}{{/if}}{{#if region}}{{#if city}}, {{/if}}{{region}}{{/if}} {{#if postalCode}}{{postalCode}}{{/if}}{{/location}}</span>
+      {{#if phone}}<span class='contactSep' aria-hidden='true'> | </span><span class='contactPiece'><a class='phoneLink' href='tel:{{phone}}'>{{phone}}</a></span>{{/if}}
+      {{#if email}}<span class='contactSep' aria-hidden='true'> | </span><span class='contactPiece'><a class='emailLink' href='mailto:{{email}}'>{{email}}</a></span>{{/if}}
+      {{#if url}}<span class='contactSep' aria-hidden='true'> | </span><span class='contactPiece'><a class='websiteLink' href='{{url}}'>{{url}}</a></span>{{/if}}
       {{#if profiles.length}}
       {{#each profiles}}
-      {{#if url}}<span class='contactPiece'><span class='divider'>•</span> <a class='profileLink' href='{{url}}'>{{{network}}}</a></span>{{/if}}
+      {{#if url}}<span class='contactSep' aria-hidden='true'> | </span><span class='contactPiece'><a class='profileLink' href='{{url}}'>{{{network}}}</a></span>{{/if}}
       {{/each}}
       {{/if}}
     </div>
@@ -40,7 +40,6 @@
     <h2 class='sectionName'>
       <span>Professional Summary</span>
     </h2>
-    <div class='sectionLine'></div>
     <div class='sectionContent'>
       <p class='summary summaryProse'>{{{resume.basics.summary}}}</p>
     </div>
@@ -52,7 +51,6 @@
     <h2 class='sectionName'>
       <span>Work Experience</span>
     </h2>
-    <div class='sectionLine'></div>
     <div class='sectionContent'>
       {{#each resume.work}}
 			<div class="jobBlock">
@@ -60,7 +58,7 @@
 	        <div class='titleGroup'>
 	          {{#if position}}<h3 class='title'>{{{position}}}</h3>{{/if}}
 	          <div class='metaRow'>
-	            {{#if name}}<div class='companyLine'><em>{{{name}}}</em>{{#if location}}, {{{location}}}{{/if}}</div>{{/if}}
+	            {{#if name}}<div class='companyLine'><span class='companyName'>{{{name}}}</span>{{#if location}}, {{{location}}}{{/if}}</div>{{/if}}
 	            {{#if startDate}}
 	            <div class='dateLine'>
 	              <span class='date'>{{#if startDate}}{{startDate}}{{/if}} - {{#if endDate}}{{endDate}}{{else}}Present{{/if}}</span>
@@ -96,7 +94,6 @@
     <h2 class='sectionName'>
       <span>Education</span>
     </h2>
-    <div class='sectionLine'></div>
     <div class='sectionContent'>
       {{#each resume.education}}
       <div class='educationBlock'>
@@ -134,7 +131,6 @@
     <h2 class='sectionName'>
       <span>Projects</span>
     </h2>
-    <div class='sectionLine'></div>
     <div class='sectionContent'>
       {{#each resume.projects}}
       <div class='projectBlock'>
@@ -170,7 +166,6 @@
     <h2 class='sectionName'>
       <span>Skills</span>
     </h2>
-    <div class='sectionLine'></div>
     <div class='sectionContent'>
       {{#each resume.skills}}
       <div class='skillBlock'>
@@ -198,7 +193,6 @@
     <h2 class='sectionName'>
       <span>Patents</span>
     </h2>
-    <div class='sectionLine'></div>
     <div class='sectionContent'>
       {{#each resume.publications}}
       <div class='publicationBlock'>
@@ -235,7 +229,6 @@
     <h2 class='sectionName'>
       <span>Awards &amp; Recognition</span>
     </h2>
-    <div class='sectionLine'></div>
     <div class='sectionContent'>
       {{#each resume.awards}}
       <div class='awardBlock'>
@@ -268,7 +261,6 @@
     <h2 class='sectionName'>
       <span>Volunteering</span>
     </h2>
-    <div class='sectionLine'></div>
     <div class='sectionContent'>
       {{#each resume.volunteer}}
       <div class='volunteerBlock'>
@@ -305,7 +297,6 @@
     <h2 class='sectionName'>
       <span>Certifications</span>
     </h2>
-    <div class='sectionLine'></div>
     <div class='sectionContent'>
       {{#each resume.certificates}}
       <div class='certificateBlock'>
@@ -331,7 +322,6 @@
     <h2 class='sectionName'>
       <span>Languages</span>
     </h2>
-    <div class='sectionLine'></div>
     <div class='sectionContent'>
       <div class='languageBlock'>
         {{#each resume.languages}}
@@ -351,7 +341,6 @@
     <h2 class='sectionName'>
       <span>Interests</span>
     </h2>
-    <div class='sectionLine'></div>
     <div class='sectionContent'>
       <div class='interestBlock'>
         {{#each resume.interests}}
@@ -371,7 +360,6 @@
     <h2 class='sectionName'>
       <span>References</span>
     </h2>
-    <div class='sectionLine'></div>
     <div class='sectionContent'>
       {{#each resume.references}}
       <div class='referenceBlock'>

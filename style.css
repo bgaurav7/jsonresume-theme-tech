@@ -1,17 +1,19 @@
-/* Neutral section rules — ATS-friendly contrast */
+/* Palette: navy accents; near-black body/job titles; mid-grey companies; #595959 dates (≥4.5:1 on white). */
 :root {
-  --resume-accent: #2079c7;
-  --resume-heading: #000;
-  --resume-rule: #333;
-  --resume-divider: #555;
+  --resume-accent: #1b4f8a;
+  --resume-body: #1a1a1a;
+  --resume-secondary: #555555;
+  --resume-company: #555555;
+  --resume-date: #595959;
+  --resume-rule: #1b4f8a;
 }
 
 /* Base styles */
 body {
   background: #ffffff;
-  font: 12pt/1.15 "Times New Roman", Times, serif;
+  font: 11pt/1.15 "Times New Roman", Times, serif;
   margin: 20px 0;
-  color: #000;
+  color: var(--resume-body);
 }
 
 h1,
@@ -22,7 +24,7 @@ h3 {
 }
 
 em {
-  color: #333;
+  color: var(--resume-company);
   font-style: italic;
 }
 
@@ -44,7 +46,6 @@ ul {
 
 a {
   text-decoration: none;
-  color: inherit;
 }
 
 a:hover {
@@ -59,10 +60,10 @@ a:hover {
 .projectUrl {
   font-weight: normal;
   font-size: inherit;
-  color: #333;
+  color: var(--resume-company);
 }
 
-/* Resume container */
+/* Resume container — no shaded backgrounds */
 .resume {
   margin: 0 auto;
   max-width: 750px;
@@ -73,69 +74,74 @@ a:hover {
   -webkit-box-shadow: 2px 2px 4px #aaa;
 }
 
-/* Section styling — semantic h2 */
+/* Section headings — top border simulates Word paragraph top border; ALL CAPS */
 h2.sectionName {
   text-align: left;
   font-weight: bold;
-  font-size: 12pt;
-  margin-bottom: 2px;
-  color: var(--resume-heading);
-}
-
-.sectionLine {
-  border-bottom: 1px solid var(--resume-rule);
-  margin-bottom: 8px;
-  width: 100%;
-  opacity: 1;
+  font-size: 10pt;
+  line-height: 1.15;
+  margin-top: 10pt;
+  margin-bottom: 3pt;
+  padding-top: 5pt;
+  border-top: 1.5pt solid var(--resume-rule);
+  color: var(--resume-accent);
+  text-transform: uppercase;
+  letter-spacing: 1pt;
 }
 
 .sectionContent {
   width: 100%;
-  margin-top: 2px;
+  margin-top: 0;
 }
 
 /* Add spacing after each section except the last one */
 .resume > div:not(:last-child) {
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
-/* Reduce spacing specifically for skills section */
 .skills {
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
-/* Common block elements */
 .sectionContent > div {
   page-break-inside: avoid;
-  margin-bottom: 4px;
-}
-
-/*
- * Headers: keep DOM order friendly for PDF text extraction (e.g. title, then company, then dates).
- * Work / education / volunteer: second line is a flex row (company or degree | dates) to save vertical space.
- * Single-line title + date (projects, awards, …): .blockHeaderInlineMeta
- */
-.blockHeader {
-  display: block;
   margin-bottom: 2px;
 }
 
+/*
+ * Company / degree + dates: float layout (right edge ≈ Word right-tab), not table/flex.
+ * Title + date (projects, awards, …): same pattern.
+ */
+.blockHeader {
+  display: block;
+  margin-bottom: 1px;
+}
+
+.blockHeader::after,
+.metaRow::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 .blockHeader.blockHeaderInlineMeta {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 8px 16px;
+  display: block;
+  width: 100%;
+  overflow: hidden;
 }
 
 .blockHeader.blockHeaderInlineMeta h3.title {
-  flex: 1 1 auto;
+  float: left;
+  max-width: calc(100% - 14em);
+  padding-right: 1em;
   min-width: 0;
 }
 
 .blockHeader.blockHeaderInlineMeta .dateLine {
-  flex: 0 0 auto;
+  float: right;
   margin-top: 0;
   text-align: right;
+  white-space: nowrap;
 }
 
 .titleGroup {
@@ -148,53 +154,59 @@ h2.sectionName {
 
 h3.title {
   font-weight: bold;
-  font-size: 12pt;
-  color: #000;
+  font-size: 11pt;
+  color: var(--resume-body);
   display: block;
   line-height: 1.15;
   margin: 0;
   padding-right: 0;
 }
 
+/* Institution line extras (GPA) — secondary, not job-title weight */
+.educationBlock h3.title em {
+  font-style: italic;
+  font-weight: normal;
+  color: var(--resume-secondary);
+}
+
 .metaRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 6px 12px;
-  flex-wrap: wrap;
+  display: block;
+  width: 100%;
   margin-top: 1px;
+  overflow: hidden;
 }
 
 .metaRow .companyLine,
-.metaRow .degree {
-  flex: 1 1 auto;
-  min-width: 0;
-  margin: 0;
-}
-
+.metaRow .degree,
 .metaRow .position {
-  flex: 1 1 auto;
+  float: left;
+  clear: left;
+  max-width: calc(100% - 14em);
+  padding-right: 1em;
   min-width: 0;
   margin: 0;
+  text-align: left;
 }
 
 .metaRow .dateLine {
-  flex: 0 1 auto;
+  float: right;
   margin-top: 0;
   text-align: right;
   white-space: nowrap;
 }
 
-.metaRow > .dateLine:only-child {
-  margin-left: auto;
-}
-
 .companyLine {
-  font-size: 12pt;
+  font-size: 11pt;
   font-weight: normal;
   line-height: 1.15;
   margin: 1px 0 0;
-  color: #000;
+  color: var(--resume-company);
+  font-style: normal;
+}
+
+.companyLine .companyName {
+  color: var(--resume-company);
+  font-style: normal;
 }
 
 .dateLine {
@@ -203,7 +215,15 @@ h3.title {
 
 .date {
   font-weight: normal;
-  font-size: 12pt;
+  font-size: 11pt;
+  color: var(--resume-date);
+  font-style: italic;
+}
+
+.metaRow .degree,
+.metaRow .degree em {
+  font-style: normal;
+  color: var(--resume-company);
 }
 
 .position,
@@ -212,22 +232,40 @@ h3.title {
   margin-bottom: 2px;
 }
 
+.phoneLink,
 .websiteLink,
 .profileLink,
-.phoneLink,
 .emailLink {
   font-size: inherit;
   font-weight: normal;
-  color: inherit;
+  text-decoration: none;
+}
+
+/* Header contact line: all black (location, pipes, phone, email, URLs) */
+.basicsBlock .headerContact,
+.basicsBlock .headerContact .contactSep,
+.basicsBlock .phoneLink,
+.basicsBlock .emailLink,
+.basicsBlock .websiteLink,
+.basicsBlock .profileLink {
+  color: #000;
+}
+
+.basicsBlock .phoneLink:hover,
+.basicsBlock .emailLink:hover,
+.basicsBlock .websiteLink:hover,
+.basicsBlock .profileLink:hover {
+  color: #000;
+  text-decoration: none;
 }
 
 .summary {
   margin-top: 2px;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
   line-height: 1.15;
 }
 
-/* Lists — hyphen markers for ATS-friendly plain-text extraction */
+/* Lists — U+2022 bullet, navy; body text stays near-black */
 .sectionContent ul {
   list-style: none;
   padding-left: 0;
@@ -237,19 +275,21 @@ h3.title {
 
 .sectionContent ul > li {
   position: relative;
-  padding-left: 1.1em;
+  padding-left: 1.15em;
   margin-bottom: 1px;
+  color: var(--resume-body);
 }
 
 .sectionContent ul > li::before {
-  content: "-";
+  content: "\2022";
   position: absolute;
   left: 0;
+  color: var(--resume-accent);
+  font-weight: normal;
 }
 
-/* Skills — <b>Name:</b> key1, key2, … (inline; names are body color, not accent) */
 .skillBlock {
-  margin-bottom: 4px;
+  margin-bottom: 2px;
   line-height: 1.15;
 }
 
@@ -259,7 +299,7 @@ h3.title {
 
 .skillRow b {
   font-weight: bold;
-  color: #000;
+  color: var(--resume-body);
 }
 
 .skillDetailsRow {
@@ -268,71 +308,58 @@ h3.title {
   padding-left: 0;
 }
 
-/* Separators */
 .separator {
-  height: 1px;
-  margin-top: 3px;
-  margin-bottom: 3px;
+  height: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  overflow: hidden;
 }
 
-.divider {
-  font-weight: bold;
-  margin-left: 5px;
-  margin-right: 5px;
-  color: var(--resume-divider);
-  opacity: 1;
-}
-
-/* Contact line: flex items wrap as whole segments (bullet + label never orphaned). */
+/* Contact row layout (colour set under .basicsBlock) */
 .headerContact {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  column-gap: 0.35em;
-  row-gap: 0.2em;
+  display: block;
+  font-size: 11pt;
+  line-height: 1.15;
 }
 
 .headerContact .contactPiece {
-  flex: 0 1 auto;
-  max-width: 100%;
-  white-space: nowrap;
-}
-
-.headerContact .divider {
-  margin-left: 0;
-  margin-right: 0.2em;
+  display: inline;
+  white-space: normal;
 }
 
 .contactLocation:empty {
   display: none;
 }
 
-/* Header elements — left-aligned for ATS-friendly linear flow */
 .nameBlock {
-  font-size: 22pt;
+  font-size: 20pt;
   text-align: left;
   margin-bottom: 0;
 }
 
 h1.name {
-  font-size: 22pt;
+  font-size: 20pt;
   font-weight: bold;
   display: block;
+  color: var(--resume-accent);
+  letter-spacing: 1.5pt;
 }
 
 .label {
-  font-size: 16pt;
+  font-size: 12pt;
   margin-bottom: 0;
+  margin-top: 2px;
+  color: var(--resume-secondary);
+  font-weight: normal;
 }
 
 .basicsBlock {
-  font-size: 12pt;
+  font-size: 11pt;
   text-align: left;
-  margin-top: 3px;
-  margin-bottom: 8px;
+  margin-top: 2px;
+  margin-bottom: 3px;
 }
 
-/* Education — single-column course list */
 .coursesBlock {
   margin-top: 2px;
 }
@@ -359,11 +386,10 @@ ul.coursesList {
   margin-bottom: 2px;
 }
 
-/* Media Queries */
 @media only screen and (max-width: 40em) {
   body {
     margin: 0;
-    font-size: 13pt;
+    font-size: 12pt;
   }
 
   .resume {
@@ -382,15 +408,15 @@ ul.coursesList {
   }
 
   .nameBlock {
-    font-size: 20pt;
+    font-size: 18pt;
   }
 
   h1.name {
-    font-size: 20pt;
+    font-size: 18pt;
   }
 
   .basicsBlock {
-    font-size: 13pt;
+    font-size: 12pt;
   }
 }
 
@@ -401,6 +427,7 @@ ul.coursesList {
 @media print {
   body {
     background: #ffffff;
+    color: var(--resume-body);
   }
 
   .resume {
@@ -414,20 +441,25 @@ ul.coursesList {
   }
 
   a {
-    color: black;
+    text-decoration: none;
+  }
+
+  .basicsBlock .headerContact,
+  .basicsBlock .headerContact .contactSep,
+  .basicsBlock .phoneLink,
+  .basicsBlock .emailLink,
+  .basicsBlock .websiteLink,
+  .basicsBlock .profileLink {
+    color: #000;
   }
 
   h2.sectionName {
-    color: var(--resume-heading);
+    color: var(--resume-accent);
+    border-top-color: var(--resume-rule);
+    letter-spacing: 0;
   }
 
-  .sectionLine {
-    border-bottom-color: var(--resume-rule);
-    opacity: 1;
-  }
-
-  .divider {
-    color: var(--resume-divider);
-    opacity: 1;
+  h1.name {
+    color: var(--resume-accent);
   }
 }
