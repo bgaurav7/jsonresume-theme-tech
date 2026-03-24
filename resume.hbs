@@ -29,7 +29,7 @@
     {{#if profiles.length}}
     <div class='profilesBlock'>
       {{#each profiles}}
-        {{#if url}}<span class='url'><a href='{{url}}'>{{{network}}}</a></span>{{#unless @last}}<span class='divider'>•</span>{{/unless}}{{/if}}
+        {{#if url}}<span class='url'><a href='{{url}}'>{{{network}}}</a> <span class='profileUrl'>({{url}})</span></span>{{#unless @last}}<span class='divider'>•</span>{{/unless}}{{/if}}
       {{/each}}
     </div>
     {{/if}}
@@ -58,12 +58,13 @@
       {{#each resume.work}}
 			<div class="jobBlock">
 	      <div class='blockHeader'>
-	        <h3 class='title'>
-	          {{#if position}}{{{position}}} — <em>{{{name}}}</em>{{#if location}}, {{{location}}}{{/if}}{{/if}}
-	        </h3>
+	        <div class='titleGroup'>
+	          {{#if position}}<h3 class='title'>{{{position}}}</h3>{{/if}}
+	          {{#if name}}<div class='companyLine'><em>{{{name}}}</em>{{#if location}}, {{{location}}}{{/if}}</div>{{/if}}
+	        </div>
 	        {{#if startDate}}
 	        <div class='dateLine'>
-	          <span class='date'>{{#if startDate}}{{startDate}}{{/if}} &mdash; {{#if endDate}}{{endDate}}{{else}}Present{{/if}}</span>
+	          <span class='date'>{{#if startDate}}{{startDate}}{{/if}} - {{#if endDate}}{{endDate}}{{else}}Present{{/if}}</span>
 	        </div>
 	        {{/if}}
 	      </div>
@@ -104,7 +105,7 @@
           </h3>
           {{#if startDate}}
           <div class='dateLine'>
-            <span class='date'>{{startDate}} &mdash; {{#if endDate}}{{endDate}}{{else}}Present{{/if}}</span>
+            <span class='date'>{{startDate}} - {{#if endDate}}{{endDate}}{{else}}Present{{/if}}</span>
           </div>
           {{/if}}
         </div>
@@ -140,7 +141,7 @@
           </h3>
           {{#if startDate}}
           <div class='dateLine'>
-            <span class='date'>{{startDate}} &mdash; {{#if endDate}}{{endDate}}{{else}}Present{{/if}}</span>
+            <span class='date'>{{startDate}} - {{#if endDate}}{{endDate}}{{else}}Present{{/if}}</span>
           </div>
           {{/if}}
         </div>
@@ -192,7 +193,7 @@
 	{{#if resume.publications.length}}
 	<div class='publications'>
     <h2 class='sectionName'>
-      <span>Patents</span>
+      <span>Publications</span>
     </h2>
     <div class='sectionLine'></div>
     <div class='sectionContent'>
@@ -202,7 +203,7 @@
           <h3 class='title'>{{#if name}}{{{name}}}{{/if}}</h3>
           {{#if releaseDate}}
           <div class='dateLine'>
-            <span class='date'>{{releaseDate}}{{#if summary}} · {{summary}}{{/if}}</span>
+            <span class='date'>{{releaseDate}}{{#if summary}} - {{summary}}{{/if}}</span>
           </div>
           {{else}}
           {{#if summary}}
@@ -274,7 +275,7 @@
           </h3>
           {{#if startDate}}
           <div class='dateLine'>
-            <span class='date'>{{#if startDate}}{{startDate}}{{/if}} &mdash; {{#if endDate}}{{endDate}}{{else}}Present{{/if}}</span>
+            <span class='date'>{{#if startDate}}{{startDate}}{{/if}} - {{#if endDate}}{{endDate}}{{else}}Present{{/if}}</span>
           </div>
           {{/if}}
         </div>
@@ -305,7 +306,7 @@
       <div class='certificateBlock'>
         <div class='blockHeader'>
           <h3 class='title'>
-            {{{name}}} — {{{issuer}}}
+            {{{name}}} - {{{issuer}}}
           </h3>
           {{#if date}}
           <div class='dateLine'>

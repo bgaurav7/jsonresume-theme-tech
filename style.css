@@ -1,13 +1,15 @@
-/* Brand accent — section titles, accents */
+/* Neutral section rules — ATS-friendly contrast */
 :root {
   --resume-accent: #2079c7;
+  --resume-heading: #000;
+  --resume-rule: #333;
+  --resume-divider: #555;
 }
 
 /* Base styles */
 body {
   background: #eeeeee;
-  font: 12px "Times New Roman", Times, serif;
-  line-height: 1.4;
+  font: 12pt/1.15 "Times New Roman", Times, serif;
   margin: 20px 0;
   color: #000;
 }
@@ -29,7 +31,7 @@ strong {
 }
 
 p {
-  line-height: 1.4;
+  line-height: 1.15;
 }
 
 p.summaryProse {
@@ -58,9 +60,10 @@ a:hover {
   font-weight: normal;
 }
 
-.projectUrl {
+.projectUrl,
+.profileUrl {
   font-weight: normal;
-  font-size: 11px;
+  font-size: inherit;
   color: #333;
 }
 
@@ -79,16 +82,16 @@ a:hover {
 h2.sectionName {
   text-align: left;
   font-weight: bold;
-  font-size: 12px;
+  font-size: 12pt;
   margin-bottom: 2px;
-  color: var(--resume-accent);
+  color: var(--resume-heading);
 }
 
 .sectionLine {
-  border-bottom: 1px solid var(--resume-accent);
+  border-bottom: 1px solid var(--resume-rule);
   margin-bottom: 8px;
   width: 100%;
-  opacity: 0.45;
+  opacity: 1;
 }
 
 .sectionContent {
@@ -122,16 +125,35 @@ h2.sectionName {
   margin-bottom: 2px;
 }
 
+.titleGroup {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding-right: 4px;
+}
+
+.titleGroup h3.title {
+  flex: none;
+  padding-right: 0;
+}
+
 h3.title {
   font-weight: bold;
-  font-size: 12px;
+  font-size: 12pt;
   color: #000;
   display: block;
-  line-height: 1.35;
+  line-height: 1.15;
   flex: 1 1 auto;
   min-width: 0;
   margin: 0;
   padding-right: 4px;
+}
+
+.companyLine {
+  font-size: 12pt;
+  font-weight: normal;
+  line-height: 1.15;
+  margin: 1px 0 0;
+  color: #000;
 }
 
 .dateLine {
@@ -143,7 +165,7 @@ h3.title {
 
 .date {
   font-weight: normal;
-  font-size: 12px;
+  font-size: 12pt;
 }
 
 .position,
@@ -154,14 +176,14 @@ h3.title {
 
 .website {
   margin-bottom: 5px;
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 12pt;
+  font-weight: 400;
 }
 
 .summary {
   margin-top: 2px;
   margin-bottom: 4px;
-  line-height: 1.4;
+  line-height: 1.15;
 }
 
 /* Lists */
@@ -175,7 +197,7 @@ h3.title {
 /* Skills — <b>Name:</b> key1, key2, … (inline; names are body color, not accent) */
 .skillBlock {
   margin-bottom: 4px;
-  line-height: 1.4;
+  line-height: 1.15;
 }
 
 .skillRow {
@@ -204,30 +226,30 @@ h3.title {
   font-weight: bold;
   margin-left: 5px;
   margin-right: 5px;
-  color: var(--resume-accent);
-  opacity: 0.55;
+  color: var(--resume-divider);
+  opacity: 1;
 }
 
 /* Header elements — left-aligned for ATS-friendly linear flow */
 .nameBlock {
-  font-size: 22px;
+  font-size: 22pt;
   text-align: left;
   margin-bottom: 0;
 }
 
 h1.name {
-  font-size: 22px;
+  font-size: 22pt;
   font-weight: bold;
   display: block;
 }
 
 .label {
-  font-size: 16px;
+  font-size: 16pt;
   margin-bottom: 0;
 }
 
 .basicsBlock {
-  font-size: 12px;
+  font-size: 12pt;
   text-align: left;
   margin-top: 3px;
   margin-bottom: 8px;
@@ -248,15 +270,15 @@ ul.coursesList {
 
 .course {
   margin-bottom: 0;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
 .gpa {
   margin-bottom: 5px;
-  font-size: 11px;
+  font-size: inherit;
 }
 
-/* Patents — one row: title (flex) + year · app no. (right) */
+/* Publications — one row: title (flex) + date / summary (right) */
 .publicationBlock {
   margin-bottom: 2px;
 }
@@ -265,7 +287,7 @@ ul.coursesList {
 @media only screen and (max-width: 40em) {
   body {
     margin: 0;
-    font-size: 14px;
+    font-size: 13pt;
   }
 
   .resume {
@@ -284,16 +306,20 @@ ul.coursesList {
   }
 
   .nameBlock {
-    font-size: 20px;
+    font-size: 20pt;
   }
 
   h1.name {
-    font-size: 20px;
+    font-size: 20pt;
   }
 
   .basicsBlock {
-    font-size: 14px;
+    font-size: 13pt;
   }
+}
+
+@page {
+  margin: 0.5in;
 }
 
 @media print {
@@ -316,21 +342,16 @@ ul.coursesList {
   }
 
   h2.sectionName {
-    color: var(--resume-accent);
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
+    color: var(--resume-heading);
   }
 
   .sectionLine {
-    border-bottom-color: var(--resume-accent);
-    opacity: 0.45;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
+    border-bottom-color: var(--resume-rule);
+    opacity: 1;
   }
 
   .divider {
-    color: var(--resume-accent);
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
+    color: var(--resume-divider);
+    opacity: 1;
   }
 }
