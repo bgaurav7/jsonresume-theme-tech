@@ -133,8 +133,11 @@ h2.sectionName {
 
 .blockHeader.blockHeaderInlineMeta h3.title {
   float: left;
-  max-width: calc(100% - 14em);
-  padding-right: 1em;
+  /* Patents/Projects titles sit left of a long, nowrap dateLine.
+     Keep the title wide enough to avoid wrapping while still leaving
+     space for the right-aligned date text. */
+  max-width: calc(100% - 12em);
+  padding-right: 0.5em;
   min-width: 0;
 }
 
