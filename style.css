@@ -103,8 +103,9 @@ h2.sectionName {
   margin-bottom: 6px;
 }
 
+/* Allow jobs/education blocks to split across pages (avoid huge gaps when a block
+   won't fit in the remaining space). Pagination is tuned in @media print below. */
 .sectionContent > div {
-  page-break-inside: avoid;
   margin-bottom: 2px;
 }
 
@@ -457,9 +458,23 @@ ul.coursesList {
     color: var(--resume-accent);
     border-top-color: var(--resume-rule);
     letter-spacing: 0;
+    break-after: avoid;
+    page-break-after: avoid;
   }
 
   h1.name {
     color: var(--resume-accent);
+  }
+
+  /* Keep role/company header with the start of its body; bullets may continue on next page. */
+  .sectionContent > div > .blockHeader {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  /* One bullet = one fragment; breaks between bullets fill the prior page. */
+  .sectionContent ul > li {
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
 }
