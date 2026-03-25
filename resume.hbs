@@ -112,11 +112,11 @@
         </div>
         {{#if courses.length}}
         <div class='coursesBlock'>
-          <ul class='coursesList'>
-          {{#each courses}}
-            <li class='course'>{{{this}}}</li>
-          {{/each}}
-          </ul>
+          <div class='coursesInline'>
+            {{#each courses}}
+              <span class='course'>{{{this}}}</span>{{#unless @last}}<span class='courseSep'> • </span>{{/unless}}
+            {{/each}}
+          </div>
         </div>
         {{/if}}
       </div>

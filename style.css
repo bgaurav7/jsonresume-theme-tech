@@ -121,7 +121,8 @@ h2.sectionName {
 .blockHeader::after,
 .metaRow::after {
   content: "";
-  display: table;
+  /* Safer clearfix than `display: table` for PDF/ATS extraction */
+  display: block;
   clear: both;
 }
 
@@ -376,9 +377,22 @@ ul.coursesList {
   list-style: none;
 }
 
-.course {
-  margin-bottom: 0;
+.coursesInline {
+  margin: 0;
+  padding: 0;
   line-height: 1.15;
+}
+
+.course {
+  display: inline;
+  margin: 0;
+}
+
+.courseSep {
+  display: inline;
+  color: var(--resume-accent);
+  font-weight: normal;
+  margin: 0 0.15em;
 }
 
 .gpa {
