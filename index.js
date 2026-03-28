@@ -24,6 +24,26 @@ function render(resume) {
     }
   });
 
+  if (resume.basics) {
+    if (!Array.isArray(resume.basics.highlights)) {
+      resume.basics.highlights = [];
+    }
+    var summaryText = resume.basics.summary && String(resume.basics.summary).trim();
+    resume.basics._showExecutiveSummary =
+      !!summaryText || resume.basics.highlights.length > 0;
+  }
+
+  if (resume.recognition) {
+    if (!Array.isArray(resume.recognition.highlights)) {
+      resume.recognition.highlights = [];
+    }
+    var rec = resume.recognition;
+    var recTitle = rec.title && String(rec.title).trim();
+    var recSummary = rec.summary && String(rec.summary).trim();
+    resume.recognition._showRecognition =
+      !!recTitle || !!recSummary || rec.highlights.length > 0;
+  }
+
 	var css = fs.readFileSync(__dirname + "/style.css", "utf-8");
 	var tpl = fs.readFileSync(__dirname + "/resume.hbs", "utf-8");
 	return Handlebars.compile(tpl)({

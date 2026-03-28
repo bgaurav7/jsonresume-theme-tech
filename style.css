@@ -167,6 +167,13 @@ h3.title {
   padding-right: 0;
 }
 
+h3.subSectionName {
+  font-size: 10.5pt;
+  font-weight: bold;
+  margin: 0.75em 0 0.35em 0;
+  color: var(--resume-body);
+}
+
 /* Institution line extras (GPA) — secondary, not job-title weight */
 .educationBlock h3.title em {
   font-style: italic;

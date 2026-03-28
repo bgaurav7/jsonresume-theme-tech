@@ -35,13 +35,21 @@
   </div>
 	{{/resume.basics}}
 
-  {{#if resume.basics.summary}}
+  {{#if resume.basics._showExecutiveSummary}}
   <div class='summaryBlock'>
     <h2 class='sectionName'>
-      <span>Professional Summary</span>
+      <span>Executive Summary</span>
     </h2>
     <div class='sectionContent'>
-      <p class='summary summaryProse'>{{{resume.basics.summary}}}</p>
+      {{#if resume.basics.summary}}<p class='summary summaryProse'>{{{resume.basics.summary}}}</p>{{/if}}
+      {{#if resume.basics.highlights.length}}
+      <h3 class='subSectionName'>Career Highlights</h3>
+      <ul class='highlights'>
+        {{#each resume.basics.highlights}}
+        <li>{{{.}}}</li>
+        {{/each}}
+      </ul>
+      {{/if}}
     </div>
   </div>
   {{/if}}
@@ -223,6 +231,27 @@
     </div>
 	</div>
 	{{/if}}
+
+  {{#if resume.recognition._showRecognition}}
+	<div class='recognition'>
+    <h2 class='sectionName'>
+      <span>Recognition</span>
+    </h2>
+    <div class='sectionContent'>
+      <div class='recognitionBlock'>
+        {{#if resume.recognition.title}}<h3 class='title'>{{{resume.recognition.title}}}</h3>{{/if}}
+        {{#if resume.recognition.summary}}<p class='summary summaryProse'>{{{resume.recognition.summary}}}</p>{{/if}}
+        {{#if resume.recognition.highlights.length}}
+        <ul class='highlights'>
+          {{#each resume.recognition.highlights}}
+          <li>{{{.}}}</li>
+          {{/each}}
+        </ul>
+        {{/if}}
+      </div>
+    </div>
+	</div>
+  {{/if}}
 
 	{{#if resume.awards.length}}
 	<div class='awards'>

@@ -29,6 +29,10 @@
         "username": "bgaurav7",
         "url": "https://bgaurav7.medium.com/"
       }
+    ],
+    "highlights": [
+      "Scaled engineering from 3 to 45 across four countries with clear technical leadership and hiring bar.",
+      "Shipped a cloud-native data platform processing 10TB+ daily with 99.99% uptime and strong security posture."
     ]
   },
   "work": [
@@ -159,6 +163,13 @@
       "summary": "Research paper detailing best practices for implementing production ML pipelines in enterprise environments."
     }
   ],
+  "recognition": {
+    "title": "",
+    "summary": "12+ years building data and ML platforms",
+    "highlights": [
+      "Invited talks on MLOps and production ML at regional engineering forums."
+    ]
+  },
   "skills": [
     {
       "name": "Engineering Leadership",

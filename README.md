@@ -59,6 +59,32 @@ This theme offers special formatting options to better showcase your technical s
 
 See the included resume.json for more examples and detailed formatting options.
 
+### Schema extensions (theme-specific)
+
+These fields are not part of the core [JSON Resume schema](https://jsonresume.org/schema/) but are supported by this theme:
+
+- **Executive Summary**: The summary block uses the heading **Executive Summary** (standard [`basics.summary`](https://jsonresume.org/schema/) prose).
+- **`basics.highlights`**: Optional array of strings, same conventions as `work[].highlights` (including inline HTML where you already use it elsewhere). Rendered as **Career Highlights** immediately below the executive summary in the same section.
+- **`recognition`**: Optional root object `{ "title", "summary", "highlights" }`, rendered after **Patents** (`publications`). `title` may be empty; `summary` is shown as a short line; `highlights` is a bullet list. The section appears when any of these fields has content.
+
+Example:
+
+```json
+{
+  "basics": {
+    "summary": "…",
+    "highlights": [
+      "<strong>Led</strong> platform engineering across cloud and edge."
+    ]
+  },
+  "recognition": {
+    "title": "",
+    "summary": "10+ years",
+    "highlights": ["Patent co-inventor on …"]
+  }
+}
+```
+
 ## 🔗 Related Projects
 
 - [JSON Resume](https://jsonresume.org/) - The open source initiative to create a JSON-based standard for resumes
