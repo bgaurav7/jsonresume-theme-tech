@@ -411,6 +411,32 @@ ul.coursesList {
   margin-bottom: 2px;
 }
 
+/* Patents: Year + Patent no. on one line, labeled (clear for ATS text extraction). */
+.publicationHeader {
+  display: block;
+  margin-bottom: 1px;
+}
+
+.publicationMeta {
+  margin-top: 2px;
+  line-height: 1.15;
+}
+
+.publicationMetaLabel {
+  font-weight: bold;
+  color: var(--resume-body);
+}
+
+.publicationMetaValue {
+  font-weight: normal;
+  color: var(--resume-date);
+}
+
+.publicationMetaSep {
+  font-weight: normal;
+  color: var(--resume-secondary);
+}
+
 @media only screen and (max-width: 40em) {
   body {
     margin: 0;
@@ -491,7 +517,8 @@ ul.coursesList {
   }
 
   /* Keep role/company header with the start of its body; bullets may continue on next page. */
-  .sectionContent > div > .blockHeader {
+  .sectionContent > div > .blockHeader,
+  .sectionContent > div > .publicationHeader {
     break-after: avoid;
     page-break-after: avoid;
   }

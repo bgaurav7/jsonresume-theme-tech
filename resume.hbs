@@ -204,19 +204,11 @@
     <div class='sectionContent'>
       {{#each resume.publications}}
       <div class='publicationBlock'>
-        <div class='blockHeader blockHeaderInlineMeta'>
-          <h3 class='title'>{{#if name}}{{{name}}}{{/if}}</h3>
-          {{#if releaseDate}}
-          <div class='dateLine'>
-            <span class='date'>{{releaseDate}}{{#if summary}} - {{summary}}{{/if}}</span>
+        <div class='publicationHeader'>
+          {{#if name}}<h3 class='title'>{{{name}}}</h3>{{/if}}
+          <div class='publicationMeta'>
+            {{#if releaseDate}}<span class='publicationMetaLabel'>Year:</span> <span class='publicationMetaValue'>{{releaseDate}}</span>{{#if summary}}<span class='publicationMetaSep'> | </span>{{/if}}{{/if}}{{#if summary}}<span class='publicationMetaLabel'>Patent no.:</span> <span class='publicationMetaValue'>{{summary}}</span>{{/if}}
           </div>
-          {{else}}
-          {{#if summary}}
-          <div class='dateLine'>
-            <span class='date'>{{summary}}</span>
-          </div>
-          {{/if}}
-          {{/if}}
         </div>
         {{#if highlights.length}}
         <ul class='highlights'>
