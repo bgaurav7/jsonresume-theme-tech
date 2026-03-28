@@ -97,43 +97,6 @@
   </div>
 	{{/if}}
 
-	{{#if resume.education.length}}
-	<div class='education'>
-    <h2 class='sectionName'>
-      <span>Education</span>
-    </h2>
-    <div class='sectionContent'>
-      {{#each resume.education}}
-      <div class='educationBlock'>
-        <div class='blockHeader'>
-          <h3 class='title'>
-            {{#if institution}}{{{institution}}}{{#if location}}, {{{location}}}{{/if}}{{#if score}} <em>({{{score}}}{{#if scoreMax}}/{{{scoreMax}}}{{/if}}{{#if scoreType}} {{{scoreType}}}{{/if}})</em>{{/if}}{{/if}}
-          </h3>
-          <div class='metaRow'>
-            {{#if studyType}}<div class='degree'><em>{{{studyType}}}{{#if area}} ({{{area}}}){{/if}}</em></div>{{/if}}
-            {{#if startDate}}
-            <div class='dateLine'>
-              <span class='date'>{{startDate}} - {{#if endDate}}{{endDate}}{{else}}Present{{/if}}</span>
-            </div>
-            {{/if}}
-          </div>
-        </div>
-        {{#if courses.length}}
-        <div class='coursesBlock'>
-          <div class='coursesInline'>
-            {{#each courses}}
-              <span class='course'>{{{this}}}</span>{{#unless @last}}<span class='courseSep'> • </span>{{/unless}}
-            {{/each}}
-          </div>
-        </div>
-        {{/if}}
-      </div>
-      {{#unless @last}}<div class='separator'></div>{{/unless}}
-      {{/each}}
-    </div>
-	</div>
-	{{/if}}
-
   {{#if resume.projects.length}}
   <div class='projects'>
     <h2 class='sectionName'>
@@ -212,6 +175,43 @@
         </span>
         {{/if}}
       </div>
+      {{/each}}
+    </div>
+	</div>
+	{{/if}}
+
+	{{#if resume.education.length}}
+	<div class='education'>
+    <h2 class='sectionName'>
+      <span>Education</span>
+    </h2>
+    <div class='sectionContent'>
+      {{#each resume.education}}
+      <div class='educationBlock'>
+        <div class='blockHeader'>
+          <h3 class='title'>
+            {{#if institution}}{{{institution}}}{{#if location}}, {{{location}}}{{/if}}{{#if score}} <em>({{{score}}}{{#if scoreMax}}/{{{scoreMax}}}{{/if}}{{#if scoreType}} {{{scoreType}}}{{/if}})</em>{{/if}}{{/if}}
+          </h3>
+          <div class='metaRow'>
+            {{#if studyType}}<div class='degree'><em>{{{studyType}}}{{#if area}} ({{{area}}}){{/if}}</em></div>{{/if}}
+            {{#if startDate}}
+            <div class='dateLine'>
+              <span class='date'>{{startDate}} - {{#if endDate}}{{endDate}}{{else}}Present{{/if}}</span>
+            </div>
+            {{/if}}
+          </div>
+        </div>
+        {{#if courses.length}}
+        <div class='coursesBlock'>
+          <div class='coursesInline'>
+            {{#each courses}}
+              <span class='course'>{{{this}}}</span>{{#unless @last}}<span class='courseSep'> • </span>{{/unless}}
+            {{/each}}
+          </div>
+        </div>
+        {{/if}}
+      </div>
+      {{#unless @last}}<div class='separator'></div>{{/unless}}
       {{/each}}
     </div>
 	</div>

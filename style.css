@@ -109,6 +109,12 @@ h2.sectionName {
   margin-bottom: 2px;
 }
 
+/* Extra breathing room between multiple roles (work) and project entries */
+.workBlock .sectionContent > .jobBlock:not(:last-child),
+.projects .sectionContent > .projectBlock:not(:last-child) {
+  margin-bottom: 8pt;
+}
+
 /*
  * Company / degree + dates: float layout (right edge ≈ Word right-tab), not table/flex.
  * Title + date (projects, awards, …): same pattern.
