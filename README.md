@@ -66,6 +66,7 @@ These fields are not part of the core [JSON Resume schema](https://jsonresume.or
 - **Executive Summary**: The summary block uses the heading **Executive Summary** (standard [`basics.summary`](https://jsonresume.org/schema/) prose).
 - **`basics.highlights`**: Optional array of strings, same conventions as `work[].highlights` (including inline HTML where you already use it elsewhere). Rendered as **Career Highlights** immediately below the executive summary in the same section.
 - **`recognition`**: Optional root object `{ "title", "summary", "highlights" }`, rendered after **Patents** (`publications`). `title` may be empty; `summary` is shown as a short line; `highlights` is a bullet list. The section appears when any of these fields has content.
+- **`leadership`**: Optional root object with the same shape as `recognition`, rendered after **Projects** and before **Skills**. The section appears when any of `title`, `summary`, or `highlights` has content.
 
 Example:
 
@@ -81,6 +82,11 @@ Example:
     "title": "",
     "summary": "10+ years",
     "highlights": ["Patent co-inventor on …"]
+  },
+  "leadership": {
+    "title": "",
+    "summary": "Led engineering through hyper-growth.",
+    "highlights": ["Built hiring and onboarding programs from zero."]
   }
 }
 ```

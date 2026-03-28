@@ -169,6 +169,27 @@
   </div>
   {{/if}}
 
+  {{#if resume.leadership._showLeadership}}
+	<div class='leadership'>
+    <h2 class='sectionName'>
+      <span>Leadership</span>
+    </h2>
+    <div class='sectionContent'>
+      <div class='leadershipBlock'>
+        {{#if resume.leadership.title}}<h3 class='title'>{{{resume.leadership.title}}}</h3>{{/if}}
+        {{#if resume.leadership.summary}}<p class='summary summaryProse'>{{{resume.leadership.summary}}}</p>{{/if}}
+        {{#if resume.leadership.highlights.length}}
+        <ul class='highlights'>
+          {{#each resume.leadership.highlights}}
+          <li>{{{.}}}</li>
+          {{/each}}
+        </ul>
+        {{/if}}
+      </div>
+    </div>
+	</div>
+  {{/if}}
+
 	{{#if resume.skills.length}}
 	<div class='skills'>
     <h2 class='sectionName'>

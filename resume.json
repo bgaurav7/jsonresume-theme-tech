@@ -261,5 +261,13 @@
       ],
       "url": "https://cloudguard.example.com"
     }
-  ]
+  ],
+  "leadership": {
+    "title": "",
+    "summary": "12+ years leading engineering orgs, hiring, and delivery at scale.",
+    "highlights": [
+      "Scaled engineering from 3 to 45 across four countries with clear leveling, mentorship, and performance frameworks.",
+      "Ran quarterly planning and release trains aligning product, platform, and infrastructure roadmaps."
+    ]
+  }
 }

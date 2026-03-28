@@ -44,6 +44,17 @@ function render(resume) {
       !!recTitle || !!recSummary || rec.highlights.length > 0;
   }
 
+  if (resume.leadership) {
+    if (!Array.isArray(resume.leadership.highlights)) {
+      resume.leadership.highlights = [];
+    }
+    var led = resume.leadership;
+    var ledTitle = led.title && String(led.title).trim();
+    var ledSummary = led.summary && String(led.summary).trim();
+    resume.leadership._showLeadership =
+      !!ledTitle || !!ledSummary || led.highlights.length > 0;
+  }
+
 	var css = fs.readFileSync(__dirname + "/style.css", "utf-8");
 	var tpl = fs.readFileSync(__dirname + "/resume.hbs", "utf-8");
 	return Handlebars.compile(tpl)({
